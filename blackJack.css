@@ -26,7 +26,12 @@ body {
     height: 175px;
     width: 125px;
     margin: 1;
-  
+}
+table{
+    display:flex;
+    padding: 10px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 
