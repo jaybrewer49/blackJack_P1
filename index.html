@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blackjack</title>
-    <link rel="stylesheet" href="style.css"/>
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="blackJack.css"/>
+    <script src="blackJack.js"></script>
 </head>
 <body>
 
-    <div class="conatiner">
-        <h2>BlackJack</h2>
+    <div class="container">
+        <h2 id ="title">BlackJack</h2>
         <h3><span id="blackjackResult"> Lets Play </h3></span>
      <div class="outcomeDisplay">
          <!--Table to keep track of mulitiple game results even after reset button is pressed-->
@@ -27,19 +27,27 @@
                 <td id="drawTracker">0</td>
             </tr>
         </table>
+      
         <!--The player and dealers results of current hand being palyed -->
-        <h2>Dealer: <span id="dealerTotal"></span></h2>
+       <div class="gameHands">
+        <h2 id="name">Dealer: <span id="dealerTotal"></span></h2>
+        <!--The dealers hand-->
         <div id ="dealerHand">
-            <img id="starter" src="./card_img/Back.jpeg">
-
+            <img src="./card_img/Back.jpeg">
+            <img src="./Card_img/5_C.png">
         </div>
-
+        <!--The players hand-->
         <h2>You: <span id="playerTotal"></span></h2>
-        <div id ="playerHand"></div>
+        <div id ="playerHand">
+            <img src="./card_img/Back.jpeg">
+            <img src="./Card_img/5_h.png">
+        </div>
+    </div>
         <!--Two buttons to either draw another card or move on to the final results or next player-->
+        <!--Button HTML code imported from https://getcssscan.com/css-buttons-examples created by ui.glass -->
         <br>
-        <button id="hit">Hit!</button>
-        <button id="stay">Stay!</button>
+        <button class="button-20" role="button">Hit!</button>
+        <button class="button-20" role="button">Stay!</button>
         <p id="Results"> </p>
 
 
