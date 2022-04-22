@@ -65,6 +65,12 @@ var canHit = true;
     }
     console.log(playerSum)
     document.getElementById('hit').addEventListener('click', hit);
+    document.getElementById('stay').addEventListener('click', stay);
+
+
+
+
+
 
     function hit(){
         if (!canHit){
@@ -80,12 +86,20 @@ var canHit = true;
         if(reduceAce(playerSum, playerAceValue)> 21){
             canHit = false;
         }
+
     }
 
     function stay(){
         dealerSum = reduceAce(dealerSum, dealerAceValue);
         playerSum = reduceAce(playerSum, playerAceValue);
+
+        canHit = false
+        document.getElementById('hidden').src = 'Card_img/' + hidden + '.png';
+
+        document.getElementById('playerTotal').innerText = playerSum;
+        document.getElementById('dealerTotal').innerText = dealerSum;
     }
+
 
 function getValue(card){
     let data = card.split("_");
@@ -105,7 +119,32 @@ function checkAce(card){
     }
     return 0;
 }
- 
-//button code
+function reduceAce(playerSum,playerAceValue){
+    while(playerSum > 21 && playerAceValue > 0){
+        playerSum -= 10;
+        playerAceValue -= 1;
+    }
+    return playerSum
+}
+}
+let message = "";
 
- }
+
+if(playerSum >21){
+    message = "You Lost!";
+}
+else if (dealerSum > 21){
+    message = "You Win!";
+}
+else if (playerSum > dealerSum){
+    message = "You Win!";
+}
+else if (playerSum == dealerSum){
+    message = "Tie!";
+}
+else if (playerSum < dealerSum){
+    message = "You Lose!";
+
+    document.getElementById('results').innerText = message;
+}
+
