@@ -27,9 +27,10 @@ body {
     width: 125px;
     margin: 1;
 }
-table{
+table
+{
     display:flex;
-    padding: 10px;
+    padding: 5px;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }

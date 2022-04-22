@@ -43,18 +43,49 @@ var canHit = true;
      dealerSum += getValue(hidden);
      dealerAceValue += checkAce(hidden);
      //console.log(hidden);
-     //console.log(dealerSum);
+    // console.log(dealerSum);
      while(dealerSum <18){
         let cardImg = document.createElement('img');//created image tag
         let card = deck.pop();//got card from deck
-        cardImg.src = "./cards/"= card+".png";//found the image tag based on card
+        cardImg.src = "Card_img/" + card + ".png";//found the image tag based on card
         dealerSum += getValue(card);
         dealerAceValue += checkAce(card);//check for any aces to change value form 1 or 11
         document.getElementById('dealerHand').append(cardImg);//appened the image in the dealers div
      }
-     console.log(dealerSum);
- }
+    console.log(dealerSum);
 
+    for(let i =0; i < 2; i++){
+        let cardImg = document.createElement('img');//created image tag
+        let card = deck.pop();//got card from deck
+        cardImg.src = "Card_img/" + card + ".png";//found the image tag based on card
+        playerSum += getValue(card);
+        playerAceValue += checkAce(card);//check for any aces to change value form 1 or 11
+        document.getElementById('playerHand').append(cardImg);//appened the image in the dealers div
+    
+    }
+    console.log(playerSum)
+    document.getElementById('hit').addEventListener('click', hit);
+
+    function hit(){
+        if (!canHit){
+            return;
+        }
+        let cardImg = document.createElement('img');//created image tag
+        let card = deck.pop();//got card from deck
+        cardImg.src = "Card_img/" + card + ".png";//found the image tag based on card
+        playerSum += getValue(card);
+        playerAceValue += checkAce(card);//check for any aces to change value form 1 or 11
+        document.getElementById('playerHand').append(cardImg);//appened the image in the dealers div
+
+        if(reduceAce(playerSum, playerAceValue)> 21){
+            canHit = false;
+        }
+    }
+
+    function stay(){
+        dealerSum = reduceAce(dealerSum, dealerAceValue);
+        playerSum = reduceAce(playerSum, playerAceValue);
+    }
 
 function getValue(card){
     let data = card.split("_");
@@ -74,3 +105,7 @@ function checkAce(card){
     }
     return 0;
 }
+ 
+//button code
+
+ }
