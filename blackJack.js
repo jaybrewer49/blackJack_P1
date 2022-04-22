@@ -1,7 +1,9 @@
 
+//Setting the dealer and player score to 0
 var dealerSum= 0;
 var playerSum= 0;
 
+//Ace can hold two seperate values; adding a way to calculate it
 var dealerAceValue=0;
 var playerAceValue=0;
  
@@ -15,7 +17,6 @@ var canHit = true;
  window.onload = function(){
      createDeck();
      shuffleDeck();
-     startGame();
  }
  
  
@@ -42,8 +43,7 @@ var canHit = true;
      hidden = deck.pop();
      dealerSum += getValue(hidden);
      dealerAceValue += checkAce(hidden);
-     //console.log(hidden);
-    // console.log(dealerSum);
+
      while(dealerSum <18){
         let cardImg = document.createElement('img');//created image tag
         let card = deck.pop();//got card from deck
@@ -129,7 +129,6 @@ function reduceAce(playerSum,playerAceValue){
 }
 let message = "";
 
-
 if(playerSum >21){
     message = "You Lost!";
 }
@@ -146,5 +145,6 @@ else if (playerSum < dealerSum){
     message = "You Lose!";
 
     document.getElementById('results').innerText = message;
+
 }
 
